@@ -44,7 +44,7 @@ public class MainTest extends TestCase {
     @Test
     public void test_getTemp2() throws IOException{
         Main main=new Main();
-        assertEquals(main.getTemp("最高气度","2016-01-07"),"-20℃");
+        assertEquals(main.getTemp("最低气度","2016-02-24"),"-6℃");
     }
 
 }
