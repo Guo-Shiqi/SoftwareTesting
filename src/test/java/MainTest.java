@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import static org.junit.Assert.assertEquals;
 
 public class MainTest extends TestCase {
@@ -33,4 +34,12 @@ public class MainTest extends TestCase {
             assertEquals(AUTHOR_BOOK_MAP.get(author), title);
         }
     }
+
+    @Test
+    public void test_getTemp() throws IOException{
+        Main main=new Main();
+        assertEquals(main.getTemp("最高气度","2016-01-07"),"-19℃");
+    }
+
+
 }
