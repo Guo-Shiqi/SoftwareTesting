@@ -26,7 +26,7 @@ public class DataBase {
                 .parse(in);
         int sum=0,num=0;
         for (CSVRecord record : records) {
-            sum-=Integer.parseInt(record.get(subjects));
+            sum+=Integer.parseInt(record.get(subjects));
             num++;
         };
         return sum/num;
