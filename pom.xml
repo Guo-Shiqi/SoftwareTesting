@@ -7,6 +7,12 @@
     <groupId>org.example</groupId>
     <artifactId>SoftwareTesting</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+    <!-- maven-compiler-plugin 将会使用指定的 JDK 版本将 java 文件编译为 class 文件（针对编译运行环境） -->
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <!-- maven-compiler-plugin 将会使用指定的 JDK 版本对源代码进行编译（针对编译运行环境） -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
