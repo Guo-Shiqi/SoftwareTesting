@@ -18,6 +18,8 @@ import javax.sound.midi.Soundbank;
 import static javax.swing.UIManager.put;
 
 public class Main {
+    public Login login;
+    public DataBase dataBase;
     public static void main(String[] args) {
         Scanner s=new Scanner(System.in );
         String name,id;
@@ -25,15 +27,22 @@ public class Main {
         name=s.next();
         System.out.print("学号:");
         id=s.next();
-        System.out.println(start(name,id));
+        Main main=new Main();
+        main.init();
+        System.out.println(main.start(name,id));
     }
-    public static String start(String name,String id){
-        Login login=new Login();
+    public Main init(){
+        login=new Login();
+        dataBase=new DataBase();
+        return this;
+    }
+
+    public String start(String name,String id){
+
         try {
             if(login.login(name,id)){
                 String[]Subjects=new String[]{"语文","数学","英语"};
                 StringBuilder result= new StringBuilder();
-                DataBase dataBase=new DataBase();
                 for(String s:Subjects){
                     result.append(s).append(":").append(dataBase.getScore(id, s)).append("\n");
                 }
