@@ -8,31 +8,41 @@ import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Scanner;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+
+import javax.sound.midi.Soundbank;
+
 import static javax.swing.UIManager.put;
 
 public class Main {
-    Map<String, String> AUTHOR_BOOK_MAP = new HashMap<String, String>() {
-        {
-            put("Dan Simmons", "Hyperion");
-            put("Douglas Adams", "The Hitchhiker's Guide to the Galaxy");
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in );
+        String name,id;
+        System.out.print("姓名:");
+        name=s.next();
+        System.out.print("学号:");
+        id=s.next();
+        System.out.println(start(name,id));
+    }
+    public static String start(String name,String id){
+        Login login=new Login();
+        try {
+            if(login.login(name,id)){
+                String[]Subjects=new String[]{"语文","数学","英语"};
+                StringBuilder result= new StringBuilder();
+                DataBase dataBase=new DataBase();
+                for(String s:Subjects){
+                    result.append(s).append(":").append(dataBase.getScore(id, s)).append("\n");
+                }
+                return result.toString();
+            }
+            return "学号或姓名错误";
+        }catch (IOException e){
+            return "数据文件不存在";
         }
-    };
 
-    String[] HEADERS = {"日期","星期","最高气度","最低气度","天气","风向"};
-    public  String getTemp(String col,String key) throws IOException {
-        Reader in = new FileReader("src/main/resources/兴安.csv");
-        Iterable<CSVRecord> records = CSVFormat.DEFAULT
-                .withFirstRecordAsHeader()
-                .parse(in);
-
-        for (CSVRecord record : records) {
-            String date = record.get("日期");
-            if(Objects.equals(date, key))
-                return record.get(col);
-        };
-        return "Not Found";
     }
 }

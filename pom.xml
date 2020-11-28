@@ -12,6 +12,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <!-- maven-compiler-plugin 将会使用指定的 JDK 版本对源代码进行编译（针对编译运行环境） -->
     <maven.compiler.source>1.8</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
@@ -24,6 +25,17 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+
+            <groupId>org.mockito</groupId>
+
+            <artifactId>mockito-core</artifactId>
+
+            <version>2.7.19</version>
+
+            <scope>test</scope>
+
         </dependency>
     </dependencies>
 
